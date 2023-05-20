@@ -36,6 +36,9 @@ function App() {
     <>
       <div className="Main p-0 m-0 box-border font-poppins">
         <div className="text-center pt-10">
+          <h1 className="tracking-tighter pb-3 text-5xl font-bold text-white">
+            WEATHER APP
+          </h1>
           <input
             className="px-3 py-1 rounded text-xl bg-transparent border-2 text-white"
             value={location}
@@ -45,22 +48,24 @@ function App() {
             placeholder="Search here...."
           />
         </div>
-        <div className="flex flex-col items-center space-y-40">
-          <div className="mt-40">
-            <h1 className="text-5xl text-white tracking-tighter">
-              {data?.name}
-            </h1>
-
-            {/* Temperature data */}
-            {data?.main ? (
-              <h1 className="text-6xl font-bold text-white">
-                {data.main.temp.toFixed()}&#176;
+        <div className="flex flex-col items-center">
+          <div className="py-40 flex justify-center items-center">
+            <div>
+              <h1 className="text-5xl text-white tracking-tighter px-5">
+                {data?.name}
               </h1>
-            ) : null}
+
+              {/* Temperature data */}
+              {data?.main ? (
+                <h1 className="text-6xl font-bold text-white px-5">
+                  {data.main.temp.toFixed()}&#176;
+                </h1>
+              ) : null}
+            </div>
 
             {/* Weather data (rain, cloudy, sunny, etc.) */}
             {data?.weather ? (
-              <p className="text-2xl italic text-white">
+              <p className="text-2xl italic text-slate-400 px-5 underline">
                 {data.weather[0]?.main}
               </p>
             ) : null}
