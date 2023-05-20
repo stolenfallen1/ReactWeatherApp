@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <div className="p-0 m-0 box-border">
+      <div className="p-0 m-0 box-border font-poppins">
         <div>
           <div>
             <h1>Dallas</h1>
