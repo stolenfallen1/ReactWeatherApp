@@ -2,9 +2,22 @@ import { useState } from "react";
 import axios from "axios";
 import "./styles/Main.css";
 
+interface WeatherData {
+  name: string;
+  main: {
+    temp: number;
+    feels_like: number;
+    humidity: string;
+  };
+  wind: {
+    speed: number;
+  };
+  weather?: Array<{ main: string }>;
+}
+
 function App() {
   const apiKey = `6f8effcef36b38afb38fc70bbfd51996`;
-  const [data, setData] = useState({});
+  const [data, setData] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
@@ -15,6 +28,7 @@ function App() {
         setData(response.data);
         console.log(response.data);
       });
+      setLocation("");
     }
   };
 
@@ -28,26 +42,44 @@ function App() {
             onChange={(event) => setLocation(event.target.value)}
             onKeyPress={getLocation}
             type="text"
-            placeholder="Enter City"
+            placeholder="Search here...."
           />
         </div>
         <div className="flex flex-col items-center space-y-40">
           <div className="mt-40">
-            <h1 className="text-5xl text-white tracking-tighter">Dallas</h1>
-            <h1 className="text-6xl font-bold text-white">60</h1>
-            <p className="text-2xl italic text-white">Rainy</p>
+            <h1 className="text-5xl text-white tracking-tighter">
+              {data?.name}
+            </h1>
+            {/* Temperature data */}
+            {data?.main ? (
+              <h1 className="text-6xl font-bold text-white">
+                {data.main.temp}&#176;F
+              </h1>
+            ) : null}
+            {/* Weather data (rain, cloudy, sunny, etc.) */}
+            {data?.weather ? (
+              <p className="text-2xl italic text-white">
+                {data.weather[0]?.main}
+              </p>
+            ) : null}
           </div>
           <div className="flex justify-between items-center p-10 rounded bg-gray-200">
             <div className="mx-5 text-center">
-              <p className="text-3xl font-bold">65</p>
+              {data?.main ? (
+                <p className="text-3xl font-bold">{data.main.feels_like}</p>
+              ) : null}
               <p className="text-2xl tracking-tighter">Feels Like</p>
             </div>
             <div className="mx-5 text-center">
-              <p className="text-3xl font-bold">12 MPH</p>
+              {data?.wind ? (
+                <p className="text-3xl font-bold">{data.wind.speed} MPH</p>
+              ) : null}
               <p className="text-2xl tracking-tighter">Wind</p>
             </div>
             <div className="mx-5 text-center">
-              <p className="text-3xl font-bold">20%</p>
+              {data?.main ? (
+                <p className="text-3xl font-bold">{data.main.humidity}%</p>
+              ) : null}
               <p className="text-2xl tracking-tighter">Humidity</p>
             </div>
           </div>
