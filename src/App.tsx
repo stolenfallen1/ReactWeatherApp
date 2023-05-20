@@ -12,22 +12,22 @@ function App() {
       <div className="Main p-0 m-0 box-border font-poppins">
         <div className="flex flex-col items-center space-y-60">
           <div className="mt-40">
-            <h1 className="text-4xl">Dallas</h1>
-            <h1 className="text-6xl font-bold">60</h1>
-            <p className="text-2xl italic text-gray-700">Rainy</p>
+            <h1 className="text-5xl text-white tracking-tighter">Dallas</h1>
+            <h1 className="text-6xl font-bold text-white">60</h1>
+            <p className="text-2xl italic text-white">Rainy</p>
           </div>
-          <div className="flex justify-between items-center border-2 border-black p-12 rounded bg-slate-100">
+          <div className="flex justify-between items-center p-10 rounded bg-gray-200">
             <div className="mx-5 text-center">
               <p className="text-3xl font-bold">65</p>
-              <p className="text-2xl">Feels Like</p>
+              <p className="text-2xl tracking-tighter">Feels Like</p>
             </div>
             <div className="mx-5 text-center">
               <p className="text-3xl font-bold">12 MPH</p>
-              <p className="text-2xl">Wind</p>
+              <p className="text-2xl tracking-tighter">Wind</p>
             </div>
             <div className="mx-5 text-center">
               <p className="text-3xl font-bold">20%</p>
-              <p className="text-2xl">Humidity</p>
+              <p className="text-2xl tracking-tighter">Humidity</p>
             </div>
           </div>
         </div>
