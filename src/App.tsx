@@ -9,26 +9,25 @@ function App() {
   return (
     <>
       <div className="p-0 m-0 box-border font-poppins">
-        <div>
-          <div>
-            <h1>Dallas</h1>
+        <div className="flex flex-col items-center space-y-60">
+          <div className="mt-40">
+            <h1 className="text-4xl">Dallas</h1>
+            <h1 className="text-6xl font-bold">60</h1>
+            <p className="text-2xl italic text-gray-700">Rainy</p>
           </div>
-          <div>
-            <h1>60</h1>
-          </div>
-          <div>
-            <p>Rainy</p>
-          </div>
-        </div>
-        <div>
-          <div>
-            <p>65</p>
-          </div>
-          <div>
-            <p>20%</p>
-          </div>
-          <div>
-            <p>12 MPH</p>
+          <div className="flex justify-between items-center">
+            <div className="mx-5 text-center">
+              <p className="text-3xl font-bold">65</p>
+              <p className="text-2xl">Feels Like</p>
+            </div>
+            <div className="mx-5 text-center">
+              <p className="text-3xl font-bold">12 MPH</p>
+              <p className="text-2xl">Wind</p>
+            </div>
+            <div className="mx-5 text-center">
+              <p className="text-3xl font-bold">20%</p>
+              <p className="text-2xl">Humidity</p>
+            </div>
           </div>
         </div>
       </div>
