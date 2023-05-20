@@ -4,13 +4,34 @@ import "./styles/Main.css";
 
 function App() {
   const apiKey = `6f8effcef36b38afb38fc70bbfd51996`;
+  const [data, setData] = useState({});
+  const [location, setLocation] = useState("");
 
-  //https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
+
+  const getLocation = (event: any) => {
+    if (event.key === "Enter") {
+      axios.get(url).then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      });
+    }
+  };
 
   return (
     <>
       <div className="Main p-0 m-0 box-border font-poppins">
-        <div className="flex flex-col items-center space-y-60">
+        <div className="text-center pt-10">
+          <input
+            className="px-3 py-1 rounded text-xl bg-transparent border-2 text-white"
+            value={location}
+            onChange={(event) => setLocation(event.target.value)}
+            onKeyPress={getLocation}
+            type="text"
+            placeholder="Enter City"
+          />
+        </div>
+        <div className="flex flex-col items-center space-y-40">
           <div className="mt-40">
             <h1 className="text-5xl text-white tracking-tighter">Dallas</h1>
             <h1 className="text-6xl font-bold text-white">60</h1>
