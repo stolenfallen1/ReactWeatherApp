@@ -20,7 +20,7 @@ function App() {
   const [data, setData] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState("");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
 
   const getLocation = (event: any) => {
     if (event.key === "Enter") {
@@ -50,12 +50,14 @@ function App() {
             <h1 className="text-5xl text-white tracking-tighter">
               {data?.name}
             </h1>
+
             {/* Temperature data */}
             {data?.main ? (
               <h1 className="text-6xl font-bold text-white">
-                {data.main.temp}&#176;F
+                {data.main.temp.toFixed()}&#176;
               </h1>
             ) : null}
+
             {/* Weather data (rain, cloudy, sunny, etc.) */}
             {data?.weather ? (
               <p className="text-2xl italic text-white">
@@ -63,26 +65,33 @@ function App() {
               </p>
             ) : null}
           </div>
-          <div className="flex justify-between items-center p-10 rounded bg-gray-200">
-            <div className="mx-5 text-center">
-              {data?.main ? (
-                <p className="text-3xl font-bold">{data.main.feels_like}</p>
-              ) : null}
-              <p className="text-2xl tracking-tighter">Feels Like</p>
+
+          {data?.name !== undefined && (
+            <div className="flex justify-between items-center p-10 rounded bg-gray-200">
+              <div className="mx-5 text-center">
+                {data?.main ? (
+                  <p className="text-3xl font-bold">
+                    {data.main.feels_like.toFixed()}&#176;
+                  </p>
+                ) : null}
+                <p className="text-2xl tracking-tighter">Feels Like</p>
+              </div>
+
+              <div className="mx-5 text-center">
+                {data?.wind ? (
+                  <p className="text-3xl font-bold">{data.wind.speed} MPH</p>
+                ) : null}
+                <p className="text-2xl tracking-tighter">Wind</p>
+              </div>
+
+              <div className="mx-5 text-center">
+                {data?.main ? (
+                  <p className="text-3xl font-bold">{data.main.humidity}%</p>
+                ) : null}
+                <p className="text-2xl tracking-tighter">Humidity</p>
+              </div>
             </div>
-            <div className="mx-5 text-center">
-              {data?.wind ? (
-                <p className="text-3xl font-bold">{data.wind.speed} MPH</p>
-              ) : null}
-              <p className="text-2xl tracking-tighter">Wind</p>
-            </div>
-            <div className="mx-5 text-center">
-              {data?.main ? (
-                <p className="text-3xl font-bold">{data.main.humidity}%</p>
-              ) : null}
-              <p className="text-2xl tracking-tighter">Humidity</p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </>
