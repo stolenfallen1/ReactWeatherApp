@@ -1,0 +1,6 @@
+.Main {
+  /* Hero Section BG IMAGE and Gradient */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.1)),
+    url("../assets/wallpaper.jpeg") no-repeat center/cover;
+  height: 100vh;
+}
