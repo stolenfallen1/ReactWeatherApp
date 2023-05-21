@@ -2,8 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import "./styles/Main.css";
 import Header from "./components/Header";
+import WeatherInfo from "./components/WeatherInfo";
+import MoreInfo from "./components/MoreInfo";
 
-interface WeatherData {
+export interface WeatherData {
   name: string;
   main: {
     temp: number;
@@ -43,51 +45,12 @@ function App() {
         />
         <div className="flex flex-col items-center">
           <div className="py-40 flex justify-center items-center">
-            <div>
-              <h1 className="text-5xl text-white tracking-tighter px-5">
-                {data?.name}
-              </h1>
-
-              {/* Temperature data */}
-              {data?.main ? (
-                <h1 className="text-6xl font-bold text-white px-5">
-                  {data.main.temp.toFixed()}&#176;
-                </h1>
-              ) : null}
-            </div>
-
-            {/* Weather data (rain, cloudy, sunny, etc.) */}
-            {data?.weather ? (
-              <p className="text-2xl italic text-slate-400 px-5 underline">
-                {data.weather[0]?.main}
-              </p>
-            ) : null}
+            <WeatherInfo data={data} />
           </div>
 
           {data?.name !== undefined && (
             <div className="flex justify-between items-center p-10 rounded bg-gray-200">
-              <div className="mx-5 text-center">
-                {data?.main ? (
-                  <p className="text-3xl font-bold">
-                    {data.main.feels_like.toFixed()}&#176;
-                  </p>
-                ) : null}
-                <p className="text-2xl tracking-tighter">Feels Like</p>
-              </div>
-
-              <div className="mx-5 text-center">
-                {data?.wind ? (
-                  <p className="text-3xl font-bold">{data.wind.speed} MPH</p>
-                ) : null}
-                <p className="text-2xl tracking-tighter">Wind</p>
-              </div>
-
-              <div className="mx-5 text-center">
-                {data?.main ? (
-                  <p className="text-3xl font-bold">{data.main.humidity}%</p>
-                ) : null}
-                <p className="text-2xl tracking-tighter">Humidity</p>
-              </div>
+              <MoreInfo data={data} />
             </div>
           )}
         </div>
