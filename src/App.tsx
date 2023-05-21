@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./styles/Main.css";
+import Header from "./components/Header";
 
 interface WeatherData {
   name: string;
@@ -35,19 +36,11 @@ function App() {
   return (
     <>
       <div className="Main p-0 m-0 box-border font-poppins">
-        <div className="text-center pt-10">
-          <h1 className="tracking-tighter pb-3 text-5xl font-bold text-white">
-            WEATHER APP
-          </h1>
-          <input
-            className="px-3 py-1 rounded text-xl bg-transparent border-2 text-white"
-            value={location}
-            onChange={(event) => setLocation(event.target.value)}
-            onKeyPress={getLocation}
-            type="text"
-            placeholder="Search here...."
-          />
-        </div>
+        <Header
+          location={location}
+          setLocation={setLocation}
+          getLocation={getLocation}
+        />
         <div className="flex flex-col items-center">
           <div className="py-40 flex justify-center items-center">
             <div>
