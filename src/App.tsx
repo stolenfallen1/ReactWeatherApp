@@ -49,7 +49,7 @@ function App() {
           </div>
 
           {data?.name !== undefined && (
-            <div className="flex justify-between items-center p-10 rounded bg-gray-200">
+            <div className="flex justify-between items-center p-10 rounded bg-gray-200 custom-600:py-7 custom-500:px-2 custom-500:py-6">
               <MoreInfo data={data} />
             </div>
           )}

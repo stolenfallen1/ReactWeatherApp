@@ -13,7 +13,6 @@ export default {
       "2xl": "1536px",
       "custom-600": { min: "500px", max: "639px" },
       "custom-500": { max: "499px" },
-      "custom-400": { min: "375px" },
     },
   },
   plugins: [],
