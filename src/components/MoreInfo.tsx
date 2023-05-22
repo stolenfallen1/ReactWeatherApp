@@ -9,25 +9,31 @@ const MoreInfo = ({ data }: MoreInfoProps) => {
     <>
       <div className="mx-5 text-center">
         {data?.main ? (
-          <p className="text-3xl font-bold">
+          <p className="text-3xl font-bold custom-600:text-2xl custom-400:text-xl">
             {data.main.feels_like.toFixed()}&#176;
           </p>
         ) : null}
-        <p className="text-2xl tracking-tighter">Feels Like</p>
+        <p className="text-2xl tracking-tighter custom-400:text-lg">
+          Feels Like
+        </p>
       </div>
 
       <div className="mx-5 text-center">
         {data?.wind ? (
-          <p className="text-3xl font-bold">{data.wind.speed} MPH</p>
+          <p className="text-3xl font-bold custom-600:text-2xl custom-400:text-xl">
+            {data.wind.speed} MPH
+          </p>
         ) : null}
-        <p className="text-2xl tracking-tighter">Wind</p>
+        <p className="text-2xl tracking-tighter custom-400:text-lg">Wind</p>
       </div>
 
       <div className="mx-5 text-center">
         {data?.main ? (
-          <p className="text-3xl font-bold">{data.main.humidity}%</p>
+          <p className="text-3xl font-bold custom-600:text-2xl custom-400:text-xl">
+            {data.main.humidity}%
+          </p>
         ) : null}
-        <p className="text-2xl tracking-tighter">Humidity</p>
+        <p className="text-2xl tracking-tighter custom-400:text-lg">Humidity</p>
       </div>
     </>
   );
